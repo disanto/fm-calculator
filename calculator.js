@@ -6,37 +6,77 @@ let lastOperation = null;
 
 // Addition
 function addition() {
-    result += input;
-    console.log(result);
     if (lastOperation == "+")
     {
-       display.innerText = result;
-       temp = [];
+        result += input;
+        display.innerText = result;
+        input = 0;
+        reset();
     } else {
+        result += input;
         lastOperation = "+";
         reset();
     }
 }
 
 // Subtraction
-function subtraction() {
-    console.log("Subtraction");
+function subtraction() {    
+    if (lastOperation == "-")
+    {
+        result -= input;
+        display.innerText = result;
+        input = 0;
+        reset();
+    } else {
+        result -= input;
+        lastOperation = "-";
+        reset();
+    }
 }
 
 // Multiplication
 function multiplication() {
-    console.log("Multiplication");
+    if (lastOperation == "x")
+    {
+        result *= input;
+        display.innerText = result;
+        input = 0;
+        reset();
+    } else if (lastOperation == "=") {
+        result = Number(display.innerText);
+        lastOperation = "x";
+        reset();
+    } 
+    else {
+        result = input;
+        lastOperation = "x";
+        reset();
+    }
 }
 
 // Division
 function division() {
-    console.log("Division");
+    if (lastOperation == "÷")
+    {
+        result = Math.round(result / input);
+        display.innerText = result;
+        input = 0;
+        reset();
+    } else if (lastOperation == "=") {
+        result = Number(display.innerText);
+        lastOperation = "÷";
+        reset();
+    } 
+    else {
+        result = input;
+        lastOperation = "÷";
+        reset();
+    }
 }
 
 // Reset used to set values after an operation occurs
 function reset() {
     temp = [];
-    input = 0;
 }
 
 // Clear
@@ -66,15 +106,19 @@ function equals() {
     switch (lastOperation) {
         case '+':
             addition();
+            lastOperation = '=';
             break;
         case '-':
             subtraction();
+            lastOperation = '=';
             break;
         case 'x':
             multiplication();
+            lastOperation = '=';
             break;
         case '÷':
             division();
+            lastOperation = '=';
             break;
         default:
             break;
