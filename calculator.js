@@ -2,10 +2,20 @@ const display = document.getElementById("display");
 let result = 0;
 let input = 0;
 let temp = [];
+let lastOperation = null;
 
 // Addition
 function addition() {
-    console.log("Addition");
+    result += input;
+    console.log(result);
+    if (lastOperation == "+")
+    {
+       display.innerText = result;
+       temp = [];
+    } else {
+        lastOperation = "+";
+        reset();
+    }
 }
 
 // Subtraction
@@ -23,12 +33,19 @@ function division() {
     console.log("Division");
 }
 
+// Reset used to set values after an operation occurs
+function reset() {
+    temp = [];
+    input = 0;
+}
+
 // Clear
 function clear() {
     result = 0;
     temp = [];
     input = 0;
     display.innerText = 0;
+    lastOperation = null;
 }
 
 // Backspace
@@ -43,7 +60,27 @@ function backspace() {
 
 // Equals
 function equals() {
-    console.log("Equals");
+
+    // check last operation fired, then set last operation to tull
+
+    switch (lastOperation) {
+        case '+':
+            addition();
+            break;
+        case '-':
+            subtraction();
+            break;
+        case 'x':
+            multiplication();
+            break;
+        case '÷':
+            division();
+            break;
+        default:
+            break;
+    }
+
+    display.innerHTML = result;
 }
 
 // Update Display
