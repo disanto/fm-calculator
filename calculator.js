@@ -1,7 +1,7 @@
 const display = document.getElementById("display");
 let result = 0;
 let input = 0;
-let temp = 0;
+let temp = [];
 
 // Addition
 function addition() {
@@ -26,14 +26,19 @@ function division() {
 // Clear
 function clear() {
     result = 0;
-    temp = 0;
+    temp = [];
     input = 0;
     display.innerText = 0;
 }
 
 // Backspace
 function backspace() {
-    console.log("Backspace");
+    // Check to see if temp's first value is empty, if it is not then proceed with backspace
+    temp.pop();
+    if (temp[0] != null )
+        display.innerText = temp.join('');
+    else
+        display.innerText = 0;
 }
 
 // Equals
@@ -51,15 +56,15 @@ function updateDisplay(text) {
     */
     
     if (!isNaN(text) && display.innerText == 0) {
-        temp = text;
-        display.innerText = temp;
-        input = Number(temp);
+        temp.push(Number(text));
+        display.innerText = temp.join('');
+        input = Number(temp.join(''));
         console.log("input: "+input);
     } 
     else if (!isNaN(text)) {
-        temp += text;
-        display.innerText = temp;
-        input = Number(temp);
+        temp.push(Number(text));
+        display.innerText = temp.join('');
+        input = Number(temp.join(''));
         console.log("input: "+input);
     }
     else {
@@ -97,8 +102,7 @@ document.querySelector("#keypad").addEventListener('click', function(event) {
             equals();
             break;
         default:
-            updateDisplay(event.target.innerText);
-                
+            updateDisplay(event.target.innerText);          
     }
 
 });
