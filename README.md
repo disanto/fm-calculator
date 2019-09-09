@@ -1,7 +1,7 @@
 # fm-calculator
 
 ## Intro
-This calculator was project assignment for the Frontend Master's Web Dev course (https://btholt.github.io/intro-to-web-dev-v2/js-project/). This code is pretty rough. However, I got it done and I'm happy with it. In all it took me under 7 hours over the course of a few days.
+This was a project assignment for the Frontend Master's Web Dev course (https://btholt.github.io/intro-to-web-dev-v2/js-project/). This code is pretty rough. However, I got it done and I'm happy with it. In all it took me under 7 hours over the course of a few days.
 
 ## Process
 I tackled this project by creating little stories / tasks and then tackling them one at a time. I tracked these tasks and other thoughts in Notes since this is just for my own education. I'll share my unfiltered nonsense below so that you can get a peak in at the chaos.
